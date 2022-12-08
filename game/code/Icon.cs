@@ -28,7 +28,8 @@ public partial class Icon : Label
 			Style.Top = Length.Fraction( value.y * ScaleFromScreen / Screen.Height );
 		}
 	}
-	public float PixelSize => 60f; // Style.Height is always null?
+	public float PixelSize => 40f; // Style.Height is always null?
+	public Icon Chasing { get; set; } = null;
 
 	public Icon( IconType type )
 	{
@@ -60,23 +61,60 @@ public partial class Icon : Label
 
 		Style.ZIndex = (int)PixelPosition.y; // Sort their ZIndex based on their vertical position to remove annoying clipping
 
+		var currentPosition = PixelPosition;
+
 		foreach ( var predator in Icon.All[Predator] )
 		{
-			if ( PixelPosition.Distance( predator.PixelPosition ) <= PixelSize )
+			if ( currentPosition.Distance( predator.PixelPosition ) <= PixelSize )
 			{
 				SetType( Predator );
 				break;
 			}
 		}
 
-		var allPreys = Icon.All[Prey];
+		var chasingDistance = 0f;
+		var chasingPosition = Vector2.Zero;
 
-		foreach ( var prey in allPreys )
+		if ( Chasing != null )
 		{
-			if ( PixelPosition.Distance( prey.PixelPosition ) <= PixelSize )
+			if ( Chasing.Type.Value != Prey )
+				Chasing = null;
+			else
 			{
-				prey.SetType( Type.Value );
-				break;
+				chasingPosition = Chasing.PixelPosition;
+				chasingDistance = currentPosition.Distance( chasingPosition );
+			}
+		}
+			
+
+		foreach ( var prey in Icon.All[Prey] )
+		{
+			var preyPosition = prey.PixelPosition;
+			var preyDistance = currentPosition.Distance( preyPosition );
+			if ( Chasing != null )
+			{
+				if ( preyDistance < chasingDistance )
+				{
+					Chasing = prey;
+					chasingDistance = preyDistance;
+					chasingPosition = preyPosition;
+				}
+			}
+			else
+			{
+				Chasing = prey;
+				chasingDistance = preyDistance;
+				chasingPosition = preyPosition;
+			}
+		}
+
+		if ( Chasing != null )
+		{
+			PixelPosition += (chasingPosition - currentPosition).Normal * Time.Delta * 50f;
+
+			if ( chasingDistance <= PixelSize )
+			{
+				Chasing.SetType( Type.Value );
 			}
 		}
 

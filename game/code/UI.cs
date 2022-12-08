@@ -9,7 +9,7 @@ public partial class UI
 	{
 		if ( newState == GameState.Playing )
 		{
-			for ( int i = 0; i < 150; i++ )
+			for ( int i = 0; i < 50; i++ )
 			{
 				var allTypes = Enum.GetValues( typeof( IconType ) );
 				var selectedType = (IconType)allTypes.GetValue( Rand.Int( allTypes.Length - 1 ) );
