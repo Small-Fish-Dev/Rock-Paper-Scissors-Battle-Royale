@@ -19,8 +19,16 @@ public partial class Icon : Label
 	public IconType Prey => (IconType)((int)(Type.Value - 1) == -1 ? Enum.GetValues( typeof( IconType ) ).Length - 1 : (int)(Type.Value - 1)); // The type before is what this icon can eat - Loops back
 	public IconType Predator => (IconType)((int)(Type.Value + 1) % Enum.GetValues( typeof( IconType ) ).Length); // The type after is what this icon gets eaten by - Loops back
 
-	public Vector2 PixelPosition => new Vector2( (Style.Left.Value.GetPixels( ScaleToScreen ) * Screen.Width), (Style.Top.Value.GetPixels( ScaleToScreen ) * Screen.Height) );
-	//public float PixelSize => Style.Height.Value.GetPixels( ScaleToScreen );
+	public Vector2 PixelPosition
+	{
+		get => new Vector2( Style.Left.Value.GetPixels( ScaleToScreen ) * Screen.Width, Style.Top.Value.GetPixels( ScaleToScreen ) * Screen.Height );
+		set
+		{
+			Style.Left = Length.Fraction( value.x * ScaleFromScreen / Screen.Width );
+			Style.Top = Length.Fraction( value.y * ScaleFromScreen / Screen.Height );
+		}
+	}
+	public float PixelSize => 60f; // Style.Height is always null?
 
 	public Icon( IconType type )
 	{
@@ -54,16 +62,18 @@ public partial class Icon : Label
 
 		foreach ( var predator in Icon.All[Predator] )
 		{
-			if ( PixelPosition.Distance( predator.PixelPosition ) <= 80f )
+			if ( PixelPosition.Distance( predator.PixelPosition ) <= PixelSize )
 			{
 				SetType( Predator );
 				break;
 			}
 		}
 
-		foreach ( var prey in Icon.All[Prey] )
+		var allPreys = Icon.All[Prey];
+
+		foreach ( var prey in allPreys )
 		{
-			if ( PixelPosition.Distance( prey.PixelPosition ) <= 80f )
+			if ( PixelPosition.Distance( prey.PixelPosition ) <= PixelSize )
 			{
 				prey.SetType( Type.Value );
 				break;
