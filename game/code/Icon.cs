@@ -28,7 +28,7 @@ public partial class Icon : Label
 			Style.Top = Length.Fraction( value.y * ScaleFromScreen / Screen.Height );
 		}
 	}
-	public float PixelSize => 40f; // Style.Height is always null?
+	public float PixelSize => 30f / RockPaperScissors.Game.Zoom;
 	public Icon Chasing { get; set; } = null;
 
 	public Icon( IconType type )
@@ -61,14 +61,17 @@ public partial class Icon : Label
 
 		Style.ZIndex = (int)PixelPosition.y; // Sort their ZIndex based on their vertical position to remove annoying clipping
 
+		var velocity = Vector2.Zero;
+
 		var currentPosition = PixelPosition;
 
 		foreach ( var predator in Icon.All[Predator] )
 		{
-			if ( currentPosition.Distance( predator.PixelPosition ) <= PixelSize )
+			var predatorPosition = predator.PixelPosition;
+
+			if ( currentPosition.Distance( predatorPosition ) <= PixelSize * 2f )
 			{
-				SetType( Predator );
-				break;
+				velocity = (currentPosition - predatorPosition).Normal * Time.Delta * ( 40f / RockPaperScissors.Game.Zoom );
 			}
 		}
 
@@ -85,7 +88,6 @@ public partial class Icon : Label
 				chasingDistance = currentPosition.Distance( chasingPosition );
 			}
 		}
-			
 
 		foreach ( var prey in Icon.All[Prey] )
 		{
@@ -110,13 +112,16 @@ public partial class Icon : Label
 
 		if ( Chasing != null )
 		{
-			PixelPosition += (chasingPosition - currentPosition).Normal * Time.Delta * 50f;
+			velocity += (chasingPosition - currentPosition).Normal * Time.Delta * ( 50f / RockPaperScissors.Game.Zoom );
 
 			if ( chasingDistance <= PixelSize )
 			{
 				Chasing.SetType( Type.Value );
 			}
 		}
+
+		var jiggle = new Vector2( Rand.Float( -1, 1 ), Rand.Float( -1, 1 ) ) * (0.5f / RockPaperScissors.Game.Zoom) * Time.Delta * 60f;
+		PixelPosition += velocity + jiggle;
 
 	}
 }

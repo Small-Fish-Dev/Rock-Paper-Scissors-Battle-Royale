@@ -16,11 +16,9 @@
     }
     Icon {
         position: absolute;
-        left: 50%;
-        top: 50%;
-        height: 60px;
-        width: 60px;
-        font-size: 50px;
+        height: @Length.Pixels( 50f / RockPaperScissors.Game.Zoom );
+        width: @Length.Pixels( 50f / RockPaperScissors.Game.Zoom );
+        font-size: @Length.Pixels( 40f / RockPaperScissors.Game.Zoom );
         text-align: center;
     }
 </style>
