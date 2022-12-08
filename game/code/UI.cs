@@ -17,5 +17,18 @@ public partial class UI
 				AddChild( icon );
 			}
 		}
+
+		if ( newState == GameState.Ending )
+		{
+			foreach( var typeList in Icon.All )
+			{
+				foreach( var icon in typeList.Value )
+				{
+					icon.Delete();
+				}
+
+				typeList.Value.Clear();
+			}
+		}
 	}
 }

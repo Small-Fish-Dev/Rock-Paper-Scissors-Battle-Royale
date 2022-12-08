@@ -19,7 +19,7 @@ public enum GameState
 public partial class RockPaperScissors : GameManager
 {
 	public static RockPaperScissors Game;
-	[Net, Change] internal GameState state { get; set; } = GameState.Paused;
+	internal GameState state { get; set; } = GameState.Paused;
 	public GameState State
 	{
 		get => state;
@@ -35,18 +35,55 @@ public partial class RockPaperScissors : GameManager
 	{
 		Game = this;
 		if ( IsClient )
-		{
 			new UI();
+	}
+
+	[Event.Client.Frame]
+	void GameLogic()
+	{
+		if ( Time.Tick % 30 != 0 ) return; // Check once in a while :-)
+
+		if ( State == GameState.Paused )
+			State = GameState.Playing;
+
+		if ( State == GameState.Playing )
+		{
+			var winner = CheckWinner();
+
+			if ( winner != null )
+			{
+				State = GameState.Ending;
+				Log.Info( $"{winner.Value} wins!" );
+			}
+		}
+
+		if ( State == GameState.Ending )
+		{
+			State = GameState.Playing;
+			Log.Info( "Playing" );
 		}
 	}
 
-	public override void ClientJoined( Client client )
+	public IconType? CheckWinner()
 	{
-		State = GameState.Playing;
-	}
+		var allTypes = (IconType[])Enum.GetValues( typeof( IconType ) );
 
-	public void OnstateChanged( GameState oldState, GameState newState )
-	{ 
-		Event.Run( "StateChange", newState );
+		foreach ( var type in allTypes )
+		{
+			var otherTypes = allTypes.Where( x => x != type );
+			int otherCount = 0;
+
+			foreach ( var otherType in otherTypes )
+			{
+				otherCount += Icon.All[otherType].Count;
+			}
+
+			if ( otherCount == 0 )
+			{
+				return type;
+			}
+		}
+
+		return null;
 	}
 }

@@ -80,7 +80,7 @@ public partial class Icon : Label
 
 			if ( currentPosition.Distance( predatorPosition ) <= PixelSize * 2f )
 			{
-				velocity = (currentPosition - predatorPosition).Normal * Time.Delta * (30f / RockPaperScissors.Game.Zoom) * ScaleToScreen;
+				velocity = (currentPosition - predatorPosition).Normal * Time.Delta * (40f / RockPaperScissors.Game.Zoom) * ScaleToScreen;
 				break;
 			}
 		}
