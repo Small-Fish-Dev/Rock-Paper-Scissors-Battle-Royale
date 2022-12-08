@@ -1,11 +1,12 @@
 ﻿using Sandbox;
+using Sandbox.UI;
 using Sandbox.UI.Construct;
 using System;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Sandbox;
+namespace RockPaperScissors;
 
 public enum GameState
 {
@@ -24,13 +25,17 @@ public partial class RockPaperScissors : GameManager
 		set
 		{
 			state = value;
-			Event.Run( value.ToString() );
+			Event.Run( "StateChange", value );
 		}
 	}
 
 	public RockPaperScissors()
 	{
 		Game = this;
+		if ( IsClient )
+		{
+			new UI();
+		}
 	}
 
 	public override void ClientJoined( Client client )
@@ -40,6 +45,6 @@ public partial class RockPaperScissors : GameManager
 
 	public void OnstateChanged( GameState oldState, GameState newState )
 	{ 
-		Event.Run( newState.ToString() );
+		Event.Run( "StateChange", newState );
 	}
 }
