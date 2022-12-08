@@ -1,0 +1,26 @@
+{
+  "Title": "Rock Paper Scissors Battle Royale",
+  "Type": "game",
+  "Org": "fish",
+  "Ident": "rock_paper",
+  "Tags": "",
+  "Schema": 1,
+  "HasAssets": true,
+  "AssetsPath": "",
+  "ResourcePaths": [],
+  "HasCode": true,
+  "CodePath": "/code/",
+  "RootNamespace": null,
+  "Metadata": {
+    "MaxPlayers": 1,
+    "MinPlayers": 1,
+    "GameNetworkType": "Singleplayer",
+    "MapSelect": "Empty",
+    "MapList": [],
+    "RankType": "None",
+    "PerMapRanking": false,
+    "LeaderboardType": "None",
+    "ProjectTemplate": null,
+    "DefaultLeaderboards": []
+  }
+}
