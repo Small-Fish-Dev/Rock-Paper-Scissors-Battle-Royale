@@ -21,14 +21,14 @@ public partial class Icon : Label
 
 	public Vector2 PixelPosition
 	{
-		get => new Vector2( Style.Left.Value.GetPixels( ScaleToScreen ) * Screen.Width, Style.Top.Value.GetPixels( ScaleToScreen ) * Screen.Height );
+		get => new Vector2( Style.Left.Value.Value / 100f * Screen.Width, Style.Top.Value.Value / 100 * Screen.Height );
 		set
 		{
-			Style.Left = Length.Fraction( value.x * ScaleFromScreen / Screen.Width );
-			Style.Top = Length.Fraction( value.y * ScaleFromScreen / Screen.Height );
+			Style.Left = Length.Fraction( value.x / Screen.Width );
+			Style.Top = Length.Fraction( value.y / Screen.Height );
 		}
 	}
-	public float PixelSize => 30f / RockPaperScissors.Game.Zoom;
+	public float PixelSize => 40f / RockPaperScissors.Game.Zoom * ScaleToScreen;
 	public Icon Chasing { get; set; } = null;
 
 	public Icon( IconType type )
@@ -80,7 +80,7 @@ public partial class Icon : Label
 
 			if ( currentPosition.Distance( predatorPosition ) <= PixelSize * 2f )
 			{
-				velocity = (currentPosition - predatorPosition).Normal * Time.Delta * ( 30f / RockPaperScissors.Game.Zoom );
+				velocity = (currentPosition - predatorPosition).Normal * Time.Delta * (30f / RockPaperScissors.Game.Zoom) * ScaleToScreen;
 				break;
 			}
 		}
@@ -97,7 +97,7 @@ public partial class Icon : Label
 
 			if ( currentPosition.Distance( allyPosition ) <= PixelSize * 1f )
 			{
-				pushOffset = (currentPosition - allyPosition).Normal * Time.Delta * (15f / RockPaperScissors.Game.Zoom);
+				pushOffset = (currentPosition - allyPosition).Normal * Time.Delta * (15f / RockPaperScissors.Game.Zoom) * ScaleToScreen;
 				break;
 			}
 		}
@@ -141,7 +141,7 @@ public partial class Icon : Label
 
 		if ( Chasing != null )
 		{
-			velocity += (chasingPosition - currentPosition).Normal * Time.Delta * ( 50f / RockPaperScissors.Game.Zoom );
+			velocity += (chasingPosition - currentPosition).Normal * Time.Delta * (50f / RockPaperScissors.Game.Zoom) * ScaleToScreen;
 
 			if ( chasingDistance <= PixelSize )
 			{
@@ -151,7 +151,7 @@ public partial class Icon : Label
 		}
 
 		// Apply new position
-		var jiggle = new Vector2( Rand.Float( -1, 1 ), Rand.Float( -1, 1 ) ) * (0.5f / RockPaperScissors.Game.Zoom) * Time.Delta * 60f;
+		var jiggle = new Vector2( Rand.Float( -1, 1 ), Rand.Float( -1, 1 ) ) * (0.5f / RockPaperScissors.Game.Zoom) * Time.Delta * 60f * ScaleToScreen;
 		PixelPosition += velocity.Clamp( 0.5f / RockPaperScissors.Game.Zoom * Time.Delta * -60f, 0.5f / RockPaperScissors.Game.Zoom * Time.Delta * 60f ) + jiggle + pushOffset;
 
 	}
