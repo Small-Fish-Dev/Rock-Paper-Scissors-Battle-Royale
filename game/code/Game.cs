@@ -29,7 +29,7 @@ public partial class RockPaperScissors : GameManager
 			Event.Run( "StateChange", value );
 		}
 	}
-	public float Zoom = 2f;
+	public float Zoom = 1f;
 
 	public RockPaperScissors()
 	{

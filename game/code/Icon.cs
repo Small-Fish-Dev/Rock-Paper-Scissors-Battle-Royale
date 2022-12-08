@@ -54,6 +54,14 @@ public partial class Icon : Label
 		};
 	}
 
+	public void PlaySound()
+	{
+		if ( Type == null ) return;
+
+		var position = PixelPosition;
+		Sound.FromScreen( $"sounds/{Type.ToString().ToLower()}.sound", position.x * ScaleFromScreen / Screen.Width, position.y * ScaleFromScreen / Screen.Width );
+	}
+
 	[Event.Client.Frame]
 	void computeAI()
 	{
@@ -62,8 +70,9 @@ public partial class Icon : Label
 		Style.ZIndex = (int)PixelPosition.y; // Sort their ZIndex based on their vertical position to remove annoying clipping
 
 		var velocity = Vector2.Zero;
-
 		var currentPosition = PixelPosition;
+
+		// Run from predators
 
 		foreach ( var predator in Icon.All[Predator] )
 		{
@@ -71,9 +80,29 @@ public partial class Icon : Label
 
 			if ( currentPosition.Distance( predatorPosition ) <= PixelSize * 2f )
 			{
-				velocity = (currentPosition - predatorPosition).Normal * Time.Delta * ( 40f / RockPaperScissors.Game.Zoom );
+				velocity = (currentPosition - predatorPosition).Normal * Time.Delta * ( 30f / RockPaperScissors.Game.Zoom );
+				break;
 			}
 		}
+
+		// Push same icons
+
+		var pushOffset = Vector2.Zero;
+
+		foreach ( var ally in Icon.All[Type.Value] )
+		{
+			if ( this == ally ) continue;
+
+			var allyPosition = ally.PixelPosition;
+
+			if ( currentPosition.Distance( allyPosition ) <= PixelSize * 1f )
+			{
+				pushOffset = (currentPosition - allyPosition).Normal * Time.Delta * (15f / RockPaperScissors.Game.Zoom);
+				break;
+			}
+		}
+
+		// Chase preys
 
 		var chasingDistance = 0f;
 		var chasingPosition = Vector2.Zero;
@@ -117,11 +146,13 @@ public partial class Icon : Label
 			if ( chasingDistance <= PixelSize )
 			{
 				Chasing.SetType( Type.Value );
+				PlaySound();
 			}
 		}
 
+		// Apply new position
 		var jiggle = new Vector2( Rand.Float( -1, 1 ), Rand.Float( -1, 1 ) ) * (0.5f / RockPaperScissors.Game.Zoom) * Time.Delta * 60f;
-		PixelPosition += velocity + jiggle;
+		PixelPosition += velocity.Clamp( 0.5f / RockPaperScissors.Game.Zoom * Time.Delta * -60f, 0.5f / RockPaperScissors.Game.Zoom * Time.Delta * 60f ) + jiggle + pushOffset;
 
 	}
 }
