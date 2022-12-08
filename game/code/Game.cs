@@ -1,10 +1,11 @@
-﻿using Sandbox;
-using Sandbox.UI;
-using Sandbox.UI.Construct;
-using System;
-using System.IO;
-using System.Linq;
-using System.Threading.Tasks;
+﻿global using Sandbox;
+global using Sandbox.UI;
+global using Sandbox.UI.Construct;
+global using System;
+global using System.IO;
+global using System.Linq;
+global using System.Threading.Tasks;
+global using System.Collections.Generic;
 
 namespace RockPaperScissors;
 
