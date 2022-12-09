@@ -1,5 +1,5 @@
 {
-  "Title": "Rock Paper Scissors Battle Royale",
+  "Title": "Rock Paper Scissors",
   "Type": "game",
   "Org": "fish",
   "Ident": "rock_paper",
@@ -10,7 +10,6 @@
   "ResourcePaths": [],
   "HasCode": true,
   "CodePath": "/code/",
-  "RootNamespace": null,
   "Metadata": {
     "MaxPlayers": 1,
     "MinPlayers": 1,
@@ -21,6 +20,10 @@
     "PerMapRanking": false,
     "LeaderboardType": "None",
     "ProjectTemplate": null,
-    "DefaultLeaderboards": []
+    "DefaultLeaderboards": [],
+    "Summary": "",
+    "Description": "",
+    "Public": false,
+    "ReplaceTags": "twitter"
   }
 }

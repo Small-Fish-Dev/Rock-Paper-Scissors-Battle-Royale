@@ -3,7 +3,7 @@
 	data = 
 	{
 		UI = true
-		Volume = "4.00,5.00,1"
+		Volume = "2.00,4.00,1"
 		Pitch = "0.80,1.20,1"
 		Decibels = 70
 		SelectionMode = "Random"
