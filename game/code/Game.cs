@@ -30,6 +30,7 @@ public partial class RockPaperScissors : GameManager
 		}
 	}
 	public float Zoom = 1f;
+	public IconType? Winner = null;
 
 	public RockPaperScissors()
 	{
@@ -38,13 +39,17 @@ public partial class RockPaperScissors : GameManager
 			new UI();
 	}
 
-	[Event.Client.Frame]
+	[Event.Tick.Client]
 	void GameLogic()
 	{
-		if ( Time.Tick % 30 != 0 ) return; // Check once in a while :-)
+		if ( Time.Tick % 60 != 0 ) return; // Check once in a while :-)
 
-		if ( State == GameState.Paused )
+		if ( State == GameState.Ending )
+		{
+			Zoom += 0.1f;
 			State = GameState.Playing;
+			Winner = null;
+		}
 
 		if ( State == GameState.Playing )
 		{
@@ -53,15 +58,12 @@ public partial class RockPaperScissors : GameManager
 			if ( winner != null )
 			{
 				State = GameState.Ending;
-				Log.Info( $"{winner.Value} wins!" );
+				Winner = winner;
 			}
 		}
 
-		if ( State == GameState.Ending )
-		{
+		if ( State == GameState.Paused )
 			State = GameState.Playing;
-			Log.Info( "Playing" );
-		}
 	}
 
 	public IconType? CheckWinner()

@@ -9,10 +9,18 @@
         left: 0;
         top: 0;
         background-color: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
     }
     .title {
-        font-size: 40px;
-        color: black;
+        color: white;
+        font-family: 'Comic Sans MS';
+        font-size: 128px;
+        text-stroke: 15px black;
+        text-shadow: 12px 12px 10px black;
+        z-index: 9999;
     }
     Icon {
         position: absolute;
@@ -24,6 +32,9 @@
 </style>
 
 <root>
+    <label class="title">
+        @(RockPaperScissors.Game.Winner == null ? "" : $"{RockPaperScissors.Game.Winner.ToString().ToUpper()} WINS")
+    </label>
 </root>
 
 @code
