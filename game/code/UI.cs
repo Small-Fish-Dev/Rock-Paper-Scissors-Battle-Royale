@@ -29,7 +29,7 @@ public partial class UI
 
 	public void CreateRandom()
 	{
-		for ( int i = 0; i < Math.Pow( RockPaperScissors.Game.Zoom / 0.01f, 1.1f ); i++ )
+		for ( int i = 0; i < Math.Pow( RockPaperScissors.Instance.Zoom / 0.01f, 1.1f ); i++ )
 		{
 			var allTypes = Enum.GetValues( typeof( IconType ) );
 			var selectedType = (IconType)allTypes.GetValue( Game.Random.Int( allTypes.Length - 1 ) );

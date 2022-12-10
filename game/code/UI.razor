@@ -24,16 +24,16 @@
     }
     Icon {
         position: absolute;
-        height: @Length.Pixels( 50f / RockPaperScissors.Game.Zoom );
-        width: @Length.Pixels( 50f / RockPaperScissors.Game.Zoom );
-        font-size: @Length.Pixels( 40f / RockPaperScissors.Game.Zoom );
+        height: @Length.Pixels( 50f / RockPaperScissors.Instance.Zoom );
+        width: @Length.Pixels( 50f / RockPaperScissors.Instance.Zoom );
+        font-size: @Length.Pixels( 40f / RockPaperScissors.Instance.Zoom );
         text-align: center;
     }
 </style>
 
 <root>
     <label class="title">
-        @(RockPaperScissors.Game.Winner == null ? "" : $"{RockPaperScissors.Game.Winner.ToString().ToUpper()} WINS")
+        @(RockPaperScissors.Instance.Winner == null ? "" : $"{RockPaperScissors.Instance.Winner.ToString().ToUpper()} WINS")
     </label>
 </root>
 

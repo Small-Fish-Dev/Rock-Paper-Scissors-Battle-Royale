@@ -18,7 +18,7 @@ public enum GameState
 
 public partial class RockPaperScissors : GameManager
 {
-	public static RockPaperScissors Game;
+	public static RockPaperScissors Instance;
 	internal GameState state { get; set; } = GameState.Paused;
 	public GameState State
 	{
@@ -34,8 +34,8 @@ public partial class RockPaperScissors : GameManager
 
 	public RockPaperScissors()
 	{
-		Game = this;
-		if ( IsClient )
+		Instance = this;
+		if ( Game.IsClient )
 			new UI();
 	}
 
