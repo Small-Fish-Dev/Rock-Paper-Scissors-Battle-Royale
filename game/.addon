@@ -23,7 +23,7 @@
     "DefaultLeaderboards": [],
     "Summary": "",
     "Description": "",
-    "Public": false,
+    "Public": true,
     "ReplaceTags": "twitter"
   }
 }

@@ -32,7 +32,7 @@ public partial class UI
 		for ( int i = 0; i < Math.Pow( RockPaperScissors.Game.Zoom / 0.01f, 1.1f ); i++ )
 		{
 			var allTypes = Enum.GetValues( typeof( IconType ) );
-			var selectedType = (IconType)allTypes.GetValue( Rand.Int( allTypes.Length - 1 ) );
+			var selectedType = (IconType)allTypes.GetValue( Game.Random.Int( allTypes.Length - 1 ) );
 			var icon = new Icon( selectedType );
 			AddChild( icon );
 		}

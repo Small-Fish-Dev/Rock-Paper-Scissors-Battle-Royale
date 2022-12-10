@@ -34,8 +34,8 @@ public partial class Icon : Label
 	public Icon( IconType type )
 	{
 		SetType( type );
-		Style.Left = Length.Fraction( Rand.Float( 1f ) );
-		Style.Top = Length.Fraction( Rand.Float( 1f ) );
+		Style.Left = Length.Fraction( Game.Random.Float( 1f ) );
+		Style.Top = Length.Fraction( Game.Random.Float( 1f ) );
 	}
 
 	public void SetType( IconType type )
@@ -151,7 +151,7 @@ public partial class Icon : Label
 		}
 
 		// Apply new position
-		var jiggle = new Vector2( Rand.Float( -1, 1 ), Rand.Float( -1, 1 ) ) * (0.5f / RockPaperScissors.Game.Zoom) * Time.Delta * 60f * ScaleToScreen;
+		var jiggle = new Vector2( Game.Random.Float( -1, 1 ), Game.Random.Float( -1, 1 ) ) * (0.5f / RockPaperScissors.Game.Zoom) * Time.Delta * 60f * ScaleToScreen;
 		PixelPosition += velocity.Clamp( 0.5f / RockPaperScissors.Game.Zoom * Time.Delta * -60f, 0.5f / RockPaperScissors.Game.Zoom * Time.Delta * 60f ) + jiggle + pushOffset;
 
 	}
