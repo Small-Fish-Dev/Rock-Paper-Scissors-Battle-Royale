@@ -1,44 +1,141 @@
 ﻿@namespace RockPaperScissors
-@inherits RootPanel
+@inherits PanelComponent
+@using Sandbox;
+@using Sandbox.UI;
+@using Sandbox.UI.Construct;
+@using System;
+@using System.IO;
+@using System.Linq;
+@using System.Threading.Tasks;
+@using System.Collections.Generic;
+
+<root>
+    <label class="title">
+        @(Winner == null ? "" : $"{Winner.ToString().ToUpper()} WINS")
+    </label>
+</root>
 
 <style>
-    UI {
-        position: absolute;
-        height: 100%;
-        width: 100%;
-        left: 0;
-        top: 0;
-        background-color: white;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        text-align: center;
-    }
-    .title {
-        color: white;
-        font-family: 'Comic Sans MS';
-        font-size: 128px;
-        text-stroke: 15px black;
-        text-shadow: 12px 12px 10px black;
-        z-index: 9999;
-    }
     Icon {
         position: absolute;
-        height: @Length.Pixels( 50f / RockPaperScissors.Instance.Zoom );
-        width: @Length.Pixels( 50f / RockPaperScissors.Instance.Zoom );
-        font-size: @Length.Pixels( 40f / RockPaperScissors.Instance.Zoom );
+        height: @Length.Pixels(50f / UI.Zoom);
+        width: @Length.Pixels(50f / UI.Zoom);
+        font-size: @Length.Pixels(40f / UI.Zoom);
         text-align: center;
     }
 </style>
 
-<root>
-    <label class="title">
-        @(RockPaperScissors.Instance.Winner == null ? "" : $"{RockPaperScissors.Instance.Winner.ToString().ToUpper()} WINS")
-    </label>
-</root>
-
 @code
 {
+    public enum GameState
+    {
+        Paused,
+        Playing,
+        Ending
+    }
+
+    public GameState State { get; set; } = GameState.Paused;
+    public static float Zoom = 1f;
+    public IconType? Winner = null;
+    TimeUntil _nextCheck;
+
+    protected override void OnFixedUpdate()
+    {
+        foreach ( var iconType in Icon.All )
+        {
+            foreach ( var icon in iconType.Value.ToList() )
+                icon.OnTick();
+        }
+
+        if (!_nextCheck) return;
+        _nextCheck = 1f;
+
+        if (State == GameState.Ending)
+        {
+            UI.Zoom += 0.1f;
+            State = GameState.Playing;
+            Winner = null;
+
+            ClearAll();
+            CreateRandom();
+        }
+
+        if (State == GameState.Playing)
+        {
+            var winner = CheckWinner();
+
+            if (winner != null)
+            {
+                State = GameState.Ending;
+                Winner = winner;
+            }
+        }
+
+        if (State == GameState.Paused)
+        {
+            State = GameState.Playing;
+
+            ClearAll();
+            CreateRandom();
+        }
+    }
+
+    public IconType? CheckWinner()
+    {
+        var allTypes = (IconType[])Enum.GetValues(typeof(IconType));
+
+        foreach (var type in allTypes)
+        {
+            var otherTypes = allTypes.Where(x => x != type);
+            int otherCount = 0;
+
+            foreach (var otherType in otherTypes)
+            {
+                otherCount += Icon.All[otherType].Count;
+            }
+
+            if (otherCount == 0)
+            {
+                return type;
+            }
+        }
+
+        return null;
+    }
+
+    public void ChangeState(GameState newState)
+    {
+        if (newState == GameState.Playing)
+        {
+            ClearAll();
+            CreateRandom();
+        }
+    }
+
+    public void ClearAll()
+    {
+        foreach (var typeList in Icon.All)
+        {
+            foreach (var icon in typeList.Value)
+            {
+                icon.Delete();
+            }
+
+            typeList.Value.Clear();
+        }
+    }
+
+    public void CreateRandom()
+    {
+        for (int i = 0; i < Math.Pow(UI.Zoom / 0.01f, 1.1f); i++)
+        {
+            var allTypes = Enum.GetValues(typeof(IconType));
+            var selectedType = (IconType)allTypes.GetValue(Game.Random.Int(allTypes.Length - 1));
+            var icon = new Icon(selectedType);
+            Panel.AddChild(icon);
+        }
+    }
+
     protected override int BuildHash()
     {
         return HashCode.Combine(Time.Now);

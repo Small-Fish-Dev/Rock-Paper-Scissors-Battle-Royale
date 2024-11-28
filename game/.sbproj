@@ -3,13 +3,12 @@
   "Type": "game",
   "Org": "fish",
   "Ident": "rock_paper",
-  "Tags": "",
   "Schema": 1,
-  "HasAssets": true,
-  "AssetsPath": "",
-  "ResourcePaths": [],
-  "HasCode": true,
-  "CodePath": "/code/",
+  "IncludeSourceFiles": false,
+  "Resources": null,
+  "PackageReferences": [],
+  "EditorReferences": null,
+  "IsWhitelistDisabled": false,
   "Metadata": {
     "MaxPlayers": 1,
     "MinPlayers": 1,
@@ -24,6 +23,14 @@
     "Summary": "",
     "Description": "",
     "Public": true,
-    "ReplaceTags": "twitter"
+    "ReplaceTags": "twitter",
+    "CsProjName": "",
+    "StartupScene": "game.scene",
+    "LaunchMode": "Normal",
+    "ControlModes": {
+      "Keyboard": true,
+      "VR": true,
+      "Gamepad": true
+    }
   }
 }

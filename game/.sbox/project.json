@@ -1,0 +1,67 @@
+{
+  "folder-metadata": {
+    "Value": "{\u0022..\\\\..\\\\..\\\\..\\\\..\\\\..\\\\Program Files (x86)\\\\Steam\\\\steamapps\\\\common\\\\sbox\\\\Recents\u0022:{\u0022Color\u0022:\u00220.46667,0.73333,1,1\u0022,\u0022Icon\u0022:\u0022\u0022},\u0022..\\\\..\\\\..\\\\..\\\\..\\\\..\\\\Program Files (x86)\\\\Steam\\\\steamapps\\\\common\\\\sbox\\\\Everything\u0022:{\u0022Color\u0022:\u00220.46667,0.73333,1,1\u0022,\u0022Icon\u0022:\u0022\u0022},\u0022.\u0022:{\u0022Color\u0022:\u00220.46667,0.73333,1,1\u0022,\u0022Icon\u0022:\u0022\u0022},\u0022..\\\\..\\\\..\\\\..\\\\..\\\\..\\\\Program Files (x86)\\\\Steam\\\\steamapps\\\\common\\\\sbox\\\\addons\\\\citizen\\\\assets\u0022:{\u0022Color\u0022:\u00220.46667,0.73333,1,1\u0022,\u0022Icon\u0022:\u0022\u0022},\u0022..\\\\..\\\\..\\\\..\\\\..\\\\..\\\\Program Files (x86)\\\\Steam\\\\steamapps\\\\common\\\\sbox\\\\core\u0022:{\u0022Color\u0022:\u00220.46667,0.73333,1,1\u0022,\u0022Icon\u0022:\u0022\u0022},\u0022code\u0022:{\u0022Color\u0022:\u00220.46667,0.73333,1,1\u0022,\u0022Icon\u0022:\u0022\u0022},\u0022Localization\u0022:{\u0022Color\u0022:\u00220.46667,0.73333,1,1\u0022,\u0022Icon\u0022:\u0022\u0022},\u0022ProjectSettings\u0022:{\u0022Color\u0022:\u00220.46667,0.73333,1,1\u0022,\u0022Icon\u0022:\u0022\u0022},\u0022sounds\u0022:{\u0022Color\u0022:\u00220.46667,0.73333,1,1\u0022,\u0022Icon\u0022:\u0022\u0022},\u0022assets\u0022:{\u0022Color\u0022:\u00220.46667,0.73333,1,1\u0022,\u0022Icon\u0022:\u0022\u0022},\u0022assets\\\\sounds\u0022:{\u0022Color\u0022:\u00220.46667,0.73333,1,1\u0022,\u0022Icon\u0022:\u0022\u0022},\u0022Assets\\\\sounds\u0022:{\u0022Color\u0022:\u00220.46667,0.73333,1,1\u0022,\u0022Icon\u0022:\u0022\u0022}}",
+    "Timeout": 1735421743,
+    "DeleteAt": 0
+  },
+  "AssetBrowser.History": {
+    "Value": "[\u0022C:\\\\Users\\\\uberm\\\\Desktop\\\\Addons\\\\Rock-Paper-Scissors-Battle-Royale\\\\game\\\\Assets\u0022,\u0022C:\\\\Users\\\\uberm\\\\Desktop\\\\Addons\\\\Rock-Paper-Scissors-Battle-Royale\\\\game\\\\assets\u0022,\u0022C:\\\\Users\\\\uberm\\\\Desktop\\\\Addons\\\\Rock-Paper-Scissors-Battle-Royale\\\\game\\\\assets\\\\sounds\u0022]",
+    "Timeout": 1735421582,
+    "DeleteAt": 0
+  },
+  "AssetBrowser.HistoryIdx": {
+    "Value": "2",
+    "Timeout": 1735421582,
+    "DeleteAt": 0
+  },
+  "Window.SboxSceneEditor.Dock": {
+    "Value": "{\u0022floatingWindows\u0022:[],\u0022mainWrapper\u0022:{\u0022geometry\u0022:\u0022AdnQywADAAAAAAAAAAAAAAAAB9IAAAPFAAAAAAAAAAAAAAfSAAADxQAAAAAAAAAACAAAAAAAAAAAAAAAB9IAAAPF\u0022,\u0022splitter\u0022:{\u0022items\u0022:[{\u0022currentIndex\u0022:0,\u0022objects\u0022:[{\u0022data\u0022:null,\u0022managedType\u0022:\u0022SceneTreeWidget\u0022,\u0022name\u0022:\u0022Hierarchy\u0022},{\u0022data\u0022:null,\u0022managedType\u0022:\u0022PanelInspectorWidget\u0022,\u0022name\u0022:\u0022UI Panels\u0022}],\u0022type\u0022:\u0022area\u0022},{\u0022items\u0022:[{\u0022items\u0022:[{\u0022currentIndex\u0022:1,\u0022objects\u0022:[{\u0022data\u0022:null,\u0022managedType\u0022:\u0022\u0022,\u0022name\u0022:\u0022GameFrame\u0022},{\u0022data\u0022:null,\u0022managedType\u0022:\u0022SceneDock\u0022,\u0022name\u0022:\u0022SceneDock:game.scene\u0022}],\u0022type\u0022:\u0022area\u0022},{\u0022currentIndex\u0022:1,\u0022objects\u0022:[{\u0022data\u0022:null,\u0022managedType\u0022:\u0022ConsoleWidget\u0022,\u0022name\u0022:\u0022Console\u0022},{\u0022data\u0022:null,\u0022managedType\u0022:\u0022MainAssetBrowser\u0022,\u0022name\u0022:\u0022Asset Browser\u0022},{\u0022data\u0022:null,\u0022managedType\u0022:\u0022LibraryManagerDock\u0022,\u0022name\u0022:\u0022Library Manager\u0022},{\u0022data\u0022:null,\u0022managedType\u0022:\u0022MixerDock\u0022,\u0022name\u0022:\u0022Mixer\u0022}],\u0022type\u0022:\u0022area\u0022}],\u0022state\u0022:\u0022AAAA/wAAAAEAAAACAAACuAAAAsoA/////wEAAAACAA==\u0022,\u0022type\u0022:\u0022splitter\u0022},{\u0022items\u0022:[{\u0022currentIndex\u0022:0,\u0022objects\u0022:[{\u0022data\u0022:null,\u0022managedType\u0022:\u0022Inspector\u0022,\u0022name\u0022:\u0022Inspector\u0022},{\u0022data\u0022:null,\u0022managedType\u0022:\u0022UndoDock\u0022,\u0022name\u0022:\u0022Undo\u0022}],\u0022type\u0022:\u0022area\u0022},{\u0022currentIndex\u0022:0,\u0022objects\u0022:[{\u0022data\u0022:null,\u0022managedType\u0022:\u0022PerformanceDock\u0022,\u0022name\u0022:\u0022Performance\u0022}],\u0022type\u0022:\u0022area\u0022}],\u0022state\u0022:\u0022AAAA/wAAAAEAAAACAAAC2wAAAOcA/////wEAAAACAA==\u0022,\u0022type\u0022:\u0022splitter\u0022}],\u0022state\u0022:\u0022AAAA/wAAAAEAAAACAAAE/AAAAckA/////wEAAAABAA==\u0022,\u0022type\u0022:\u0022splitter\u0022}],\u0022state\u0022:\u0022AAAA/wAAAAEAAAACAAABBgAABskA/////wEAAAABAA==\u0022,\u0022type\u0022:\u0022splitter\u0022}},\u0022toolWindowManagerStateFormat\u0022:1}",
+    "Timeout": 1735421738,
+    "DeleteAt": 0
+  },
+  "SceneView.Viewport0.Settings": {
+    "Value": "{\u0022CameraPosition\u0022:\u0022-185.5303,-179.4493,230.3029\u0022,\u0022CameraRotation\u0022:\u0022-0.121904,0.3008155,0.3552434,0.8766136\u0022,\u0022View\u0022:0,\u0022RenderMode\u0022:0,\u0022WireframeMode\u0022:false,\u0022EnablePostProcessing\u0022:true,\u0022ShowGrid\u0022:true,\u0022GridOpacity\u0022:0.2,\u0022GridAxis\u0022:0,\u0022CameraOrthoHeight\u0022:1000}",
+    "Timeout": 1735421815,
+    "DeleteAt": 0
+  },
+  ".Viewport0": {
+    "Value": "{\u0022CameraPosition\u0022:\u0022-300,0,100\u0022,\u0022CameraRotation\u0022:\u00220,0,0,1\u0022,\u0022CameraOrthoHeight\u0022:1000}",
+    "Timeout": 1735421733,
+    "DeleteAt": 0
+  },
+  "SceneView.Layout": {
+    "Value": "{\u0022Layout\u0022:0,\u0022SplitterState\u0022:[]}",
+    "Timeout": 1735421733,
+    "DeleteAt": 0
+  },
+  "LastSaveLocation.scene": {
+    "Value": "C:/Users/uberm/Desktop/Addons/Rock-Paper-Scissors-Battle-Royale/game/assets/game.scene",
+    "Timeout": 1735418604,
+    "DeleteAt": 0
+  },
+  "gizmo.settings": {
+    "Value": "{\u0022EditMode\u0022:\u0022position\u0022,\u0022Selection\u0022:true,\u0022ViewMode\u0022:\u00223d\u0022,\u0022GizmosEnabled\u0022:true,\u0022GizmoScale\u0022:1,\u0022GridSpacing\u0022:32,\u0022SnapToGrid\u0022:false,\u0022SnapToAngles\u0022:true,\u0022AngleSpacing\u0022:15,\u0022GlobalSpace\u0022:false,\u0022DebugActionGraphs\u0022:false}",
+    "Timeout": 1735421582,
+    "DeleteAt": 0
+  },
+  "scene.lastopened": {
+    "Value": "[\u0022game.scene\u0022]",
+    "Timeout": 1735421582,
+    "DeleteAt": 0
+  },
+  "game.scene.Viewport0": {
+    "Value": "{\u0022CameraPosition\u0022:\u0022-185.5303,-179.4493,230.3029\u0022,\u0022CameraRotation\u0022:\u0022-0.121904,0.3008155,0.3552434,0.8766136\u0022,\u0022CameraOrthoHeight\u0022:1000}",
+    "Timeout": 1735421815,
+    "DeleteAt": 0
+  },
+  "AssetBrowser.Scene.History": {
+    "Value": "[\u0022C:\\\\Users\\\\uberm\\\\Desktop\\\\Addons\\\\Rock-Paper-Scissors-Battle-Royale\\\\game\\\\Assets\u0022,\u0022C:\\\\Users\\\\uberm\\\\Desktop\\\\Addons\\\\Rock-Paper-Scissors-Battle-Royale\\\\game\\\\Assets\u0022]",
+    "Timeout": 1735421743,
+    "DeleteAt": 0
+  },
+  "AssetBrowser.Scene.HistoryIdx": {
+    "Value": "1",
+    "Timeout": 1735421743,
+    "DeleteAt": 0
+  }
+}

@@ -1,0 +1,21 @@
+﻿UI {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    left: 0;
+    top: 0;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+
+    .title {
+        color: white;
+        font-family: 'Comic Sans MS';
+        font-size: 128px;
+        text-stroke: 15px black;
+        text-shadow: 12px 12px 10px black;
+        z-index: 9999;
+    }
+}
